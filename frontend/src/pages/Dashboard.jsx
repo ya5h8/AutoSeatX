@@ -2,8 +2,9 @@ import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import * as XLSX from "xlsx";
+import API_BASE_URL from "../api";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = `${API_BASE_URL}/api`;
 const getToken = () => localStorage.getItem("token");
 const authHeaders = () => ({ Authorization: `Bearer ${getToken()}` });
 
@@ -723,7 +724,7 @@ function PDFs() {
     if (!selectedExam) { alert("Please select an exam"); return; }
     try {
       const res = await axios.post(`${API_URL}/pdf/generate`, { exam_id: selectedExam }, { headers: authHeaders() });
-      alert("PDF Generated!"); window.open(`http://localhost:5000/uploads/${res.data.fileName}`, "_blank");
+      alert("PDF Generated!"); window.open(`${API_BASE_URL}/uploads/${res.data.fileName}`, "_blank");
     } catch (err) { alert("PDF generation failed"); }
   };
 

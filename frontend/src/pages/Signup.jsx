@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../api";
 
 function Signup() {
   const [collegeName, setCollegeName] = useState("");
@@ -14,7 +15,7 @@ function Signup() {
     setLoading(true);
 
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", {
+      await axios.post(`${API_BASE_URL}/api/auth/signup`, {
         college_name: collegeName,
         email,
         password,

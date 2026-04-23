@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../api";
 
 /* ===== Mini Room Map Component for Students ===== */
 function MiniRoomMap({ totalRows, totalCols, seatRow, seatCol, doorSide }) {
@@ -107,11 +108,11 @@ function StudentPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/exams/timetable")
+    axios.get(`${API_BASE_URL}/api/exams/timetable`)
       .then(res => setTimetable(res.data))
       .catch(err => console.error("Failed to load timetable"));
 
-    axios.get("http://localhost:5000/api/feedback/questions")
+    axios.get(`${API_BASE_URL}/api/feedback/questions`)
       .then(res => setQuestions(res.data))
       .catch(err => console.error("Failed to load feedback questions"));
   }, []);
@@ -127,7 +128,7 @@ function StudentPage() {
       setError("");
       setDisambiguationOptions(null);
       const res = await axios.post(
-        "http://localhost:5000/api/exams/student-seat",
+        `${API_BASE_URL}/api/exams/student-seat`,
         { query: searchQuery }
       );
       setSeatData(res.data);
@@ -193,7 +194,7 @@ function StudentPage() {
 
     try {
       setFeedbackState(prev => ({ ...prev, status: "submitting" }));
-      await axios.post("http://localhost:5000/api/feedback", {
+      await axios.post(`${API_BASE_URL}/api/feedback`, {
         roll_no: seatData.roll_no,
         exam_id: examId,
         responses: feedbackState.responses,
