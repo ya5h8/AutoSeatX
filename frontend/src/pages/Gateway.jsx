@@ -68,14 +68,7 @@ function Gateway() {
       </div>
 
       {/* Action Buttons */}
-      <div style={{
-        display: "flex",
-        gap: "16px",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        zIndex: 2,
-        marginBottom: "3rem",
-      }}>
+      <div className="responsive-button-group" style={{ zIndex: 2, marginBottom: "3rem" }}>
         <button
           onClick={() => navigate("/student")}
           style={{

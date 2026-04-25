@@ -41,10 +41,9 @@ function Signup() {
       background: "linear-gradient(160deg, #F5F6FA 0%, #EEF0F7 50%, #F5F6FA 100%)",
       padding: "20px"
     }}>
-      <div style={{
+      <div className="responsive-card-padding" style={{
         background: "var(--bg-white)",
         border: "1px solid var(--border-color)",
-        padding: "48px 52px",
         borderRadius: "var(--radius-xl)",
         boxShadow: "var(--shadow-lg)",
         width: "100%",
