@@ -410,12 +410,12 @@ function StudentPage() {
               <div key={exam.exam_id || idx} style={{ marginTop: idx === 0 ? "0" : "24px", padding: "22px", background: "var(--bg-subtle)", borderRadius: "var(--radius-md)", border: "1px solid var(--border-color)", animation: `fadeInUp 0.5s ease-out ${0.1 * idx}s both` }}>
                 <div style={{ display: "grid", gap: "10px" }}>
                   <DetailItem label="Examination" value={exam.exam_type} />
-                  <div className="grid-2-col">>
+                  <div className="grid-2-col" style={{ gap: "10px" }}>
                     <DetailItem label="Date" value={exam.exam_date} />
                     <DetailItem label="Time" value={`${exam.start_time} – ${exam.end_time}`} />
                   </div>
                   <DetailItem label="Room Number" value={exam.room_no} accent />
-                  <div className="grid-2-col">>
+                  <div className="grid-2-col" style={{ gap: "10px" }}>
                     <DetailItem label="Seat Row" value={exam.seat_row} accent />
                     <DetailItem label="Seat Column" value={String.fromCharCode(64 + exam.seat_column)} accent />
                   </div>

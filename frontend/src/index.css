@@ -283,10 +283,15 @@ select option {
   color: var(--text-primary);
 }
 
-/* ===== Table layout fix ===== */
+/* ===== Table layout fix & Mobile Scroll ===== */
 table {
   table-layout: auto;
-  word-wrap: break-word;
+  border-collapse: collapse;
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
 }
 
 /* ===== Responsive Utilities ===== */

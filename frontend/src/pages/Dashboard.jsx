@@ -320,7 +320,6 @@ function Home() {
       </div>
       <Card title="Room Status">
         {rooms.length === 0 ? <EmptyState message="No rooms added yet" /> : (
-          <div className="table-responsive">
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead><tr style={{ borderBottom: "1px solid var(--border-color)" }}>
               <th style={thStyle}>Room</th><th style={thStyle}>Capacity</th><th style={thStyle}>Status</th>
@@ -337,7 +336,6 @@ function Home() {
               </TableRow>
             ))}</tbody>
           </table>
-        </div>
         )}
       </Card>
     </div>
@@ -493,7 +491,7 @@ function FileConverter() {
             {/* Column Mapping */}
             <div style={{ marginBottom: "20px" }}>
               <p style={{ fontSize: "0.82rem", fontWeight: "700", color: "var(--text-secondary)", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "0.8px" }}>Map Columns to Required Fields</p>
-              <div className="grid-2-col">>
+              <div className="grid-2-col" style={{ gap: "12px" }}>
                 {REQUIRED_FIELDS.map(field => (
                   <div key={field} style={{ background: "var(--bg-subtle)", padding: "12px 14px", borderRadius: "var(--radius-sm)", border: `1px solid ${mapping[field] ? fieldColors[field] + "33" : "var(--border-color)"}`, transition: "border 0.2s" }}>
                     <label style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.8rem", fontWeight: "700", color: fieldColors[field], marginBottom: "8px" }}>
@@ -528,8 +526,7 @@ function FileConverter() {
             {preview && preview.length > 0 && (
               <div style={{ overflowX: "auto" }}>
                 <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", marginBottom: "8px", fontWeight: "600" }}>Preview — first {preview.length} rows:</p>
-                <div className="table-responsive">
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
                   <thead>
                     <tr style={{ background: "var(--bg-subtle)" }}>
                       {REQUIRED_FIELDS.map(f => (
@@ -629,22 +626,18 @@ function Upload() {
       <div className="grid-2-col" style={{ marginBottom: "0" }}>
         <Card title="Uploaded Datasets">
           {datasets.length === 0 ? <EmptyState message="No datasets uploaded yet" /> : (
-            <div className="table-responsive">
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead><tr style={{ borderBottom: "1px solid var(--border-color)" }}><th style={thStyle}>Name</th><th style={thStyle}>Students</th><th style={thStyle}>Action</th></tr></thead>
               <tbody>{datasets.map(ds => (<TableRow key={ds.id}><td style={{ ...tdStyle, fontWeight: "600" }}>{ds.dataset_name}</td><td style={tdStyle}>{ds.total_students}</td><td style={tdStyle}><DeleteBtn onClick={() => handleDeleteDataset(ds.id)} /></td></TableRow>))}</tbody>
             </table>
-          </div>
           )}
         </Card>
         <Card title="All Rooms">
           {rooms.length === 0 ? <EmptyState message="No rooms added yet" /> : (
-            <div className="table-responsive">
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead><tr style={{ borderBottom: "1px solid var(--border-color)" }}><th style={thStyle}>Room</th><th style={thStyle}>Floor</th><th style={thStyle}>Layout</th><th style={thStyle}>Capacity</th><th style={thStyle}>Door</th><th style={thStyle}>Action</th></tr></thead>
               <tbody>{rooms.map(room => (<TableRow key={room.id}><td style={{ ...tdStyle, fontWeight: "600" }}>{room.room_no}</td><td style={tdStyle}>{room.floor_no ?? '—'}</td><td style={tdStyle}>{room.total_rows}x{room.total_columns}</td><td style={tdStyle}>{room.capacity}</td><td style={{ ...tdStyle, textTransform: "capitalize" }}>{room.door_side || 'left'}</td><td style={tdStyle}><DeleteBtn onClick={() => handleDeleteRoom(room.id)} /></td></TableRow>))}</tbody>
             </table>
-          </div>
           )}
         </Card>
       </div>
@@ -687,7 +680,7 @@ function ExamSeating() {
     <div>
       <h1 style={{ fontSize: "1.8rem", fontWeight: "700", color: "var(--text-primary)", marginBottom: "22px" }}>Exam Seating Arrangement</h1>
       <Card title="Configure Exam Details">
-        <div className="grid-2-col">>
+        <div className="grid-2-col">
           <FormGroup label="Student Dataset">
             <select value={selectedDataset} onChange={e => setSelectedDataset(e.target.value)} style={inputStyle}>
               <option value="">Choose a dataset</option>
@@ -751,7 +744,6 @@ function PDFs() {
       </Card>
       {exams.length > 0 && (
         <div style={{ marginTop: "18px" }}><Card title="All Exams">
-          <div className="table-responsive">
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead><tr style={{ borderBottom: "1px solid var(--border-color)" }}>
               <th style={thStyle}>ID</th><th style={thStyle}>Type</th><th style={thStyle}>Date</th><th style={thStyle}>Time</th><th style={thStyle}>Rooms</th><th style={thStyle}>Action</th>
@@ -767,7 +759,6 @@ function PDFs() {
               </TableRow>
             ))}</tbody>
           </table>
-        </div>
         </Card></div>
       )}
     </div>
@@ -984,8 +975,7 @@ function FeedbackResponses() {
                   </div>
                 </div>
                 <div style={{ overflowX: "auto" }}>
-                  <div className="table-responsive">
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse" }}>
                     <thead><tr style={{ background: "var(--bg-subtle)", borderBottom: "1px solid var(--border-light)" }}>
                       <th style={fbThStyle}>Student</th><th style={fbThStyle}>Exam</th>
                       {questions.map((q, i) => (<th key={i} style={{ ...fbThStyle, textAlign: "center" }}>{q.label}</th>))}
